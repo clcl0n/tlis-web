@@ -1,0 +1,24 @@
+{
+    "compilerOptions": {
+        "esModuleInterop": true,
+        "outDir": "./build/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "target": "ES5",
+        "importHelpers": true,
+        "allowJs": true,
+        "jsx": "react",
+        "baseUrl": "src",
+        "paths": {
+            "@components/*": ["components/*"],
+            "@store/*": ["store/*"]
+        }
+    },
+    "include": [
+        "src",
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}

@@ -1,0 +1,20 @@
+{
+  "name": "tlis-web",
+  "version": "1.0.0",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build-dev:web": "webpack-dev-server --config ./web/webpack/webpack.config.dev.js --port 3000",
+    "build-prod:web": "webpack --config ./web/webpack/webpack.config.production.js",
+    "build-dev:web-admin": "webpack-dev-server --config ./web-admin/webpack/webpack.config.dev.js --port 3030",
+    "build-prod:web-admin": "webpack --config ./web-admin/webpack/webpack.config.production.js",
+    "t": "prettier --check --config './web/.prettierrc.json' '*/**/*.{js,ts,tsx}'"
+  },
+  "workspaces": [
+    "web",
+    "web-admin",
+    "server"
+  ],
+  "dependencies": {},
+  "devDependencies": {}
+}

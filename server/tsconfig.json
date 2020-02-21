@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "baseUrl": "src",
+        "sourceMap": true,
+        "paths": {
+            "@controllers/*": ["./controllers/*"],
+            "@routes/*": ["./routes/*"],
+            "@utils/*": ["./utils/*"],
+            "@logger": ["./utils/logger.ts"],
+            "@src/*": ["./*"]
+        }
+    },
+    "include": [
+        "src"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
+}
