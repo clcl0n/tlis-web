@@ -1,9 +1,17 @@
 version: '3'
 services:
-    server:
-        build: .
-        image: tlisweb:1.0
-        ports:
-            - "8080:8080"
+    # server:
+    #     build: .
+    #     image: tlisweb:1.0
+    #     ports:
+    #         - "8080:8080"
     mongoDB:
-        image: mongo:4.2.3-bionic 
+        image: mongo:4.2.3-bionic
+        container_name: 'tlis-mongoDB'
+        environment:
+            - MONGO_INITDB_DATABASE=tlis
+        volumes:
+            - ./mongoDB/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+            # - ./mongoDB/mongo-volume:/data/db
+        ports:
+            - '27017-27019:27017-27019'

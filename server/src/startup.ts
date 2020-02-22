@@ -1,7 +1,10 @@
-import { Express } from 'express';
+import { Express, json } from 'express';
 import { createLogger, format, info, transports } from 'winston';
 import routes from './routes';
 import logger from '@logger';
+import { config } from 'dotenv';
+import { resolve } from 'path';
+import { connectToDB } from './db';
 
 /**
  * Register Express Routes.
@@ -9,6 +12,7 @@ import logger from '@logger';
  * @param api Express intance to configure
  */
 export const registerExpressServerRoutes = (api: Express) => {
+    api.use(json());
     api.use(routes);
 };
 
@@ -19,7 +23,11 @@ export const registerExpressServerRoutes = (api: Express) => {
  */
 export const configureExpressServer = (api: Express) => {
     api.set('port', 8080);
+    config({
+        path: resolve(__dirname, '../.env')
+    });
     logger.info('Express configured.');
+    connectToDB();
 };
 
 /**

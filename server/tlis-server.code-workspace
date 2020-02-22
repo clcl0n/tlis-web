@@ -1,0 +1,23 @@
+{
+    "folders": [
+        {
+            "name": "Tlis Server",
+            "path": "./"
+        }
+    ],
+    "extensions": {
+        "recommendations": [
+            "esbenp.prettier-vscode",
+            "ms-azuretools.vscode-docker",
+            "dbaeumer.vscode-eslint",
+            "pkief.material-icon-theme",
+            "ms-vscode-remote.remote-containers",
+            "akamud.vscode-theme-onedark"
+        ]
+    },
+    "settings": {
+        "editor.formatOnSave": true,
+        "eslint.codeActionsOnSave.mode": "all",
+        "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
+    }
+}
