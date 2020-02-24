@@ -1,24 +1,44 @@
 import { Request, Response } from 'express';
-import { sign } from 'jsonwebtoken';
+import { verify } from 'jsonwebtoken';
 import ICreateTokenRequestBody from '@src/typings/interfaces/ICreateTokenRequestBody';
-
-const userDB = [
-    {
-        userName: 'tlis',
-        password: 'tlis'
-    }
-];
+import { authorizeWebAdmin } from '@src/db/db.find';
+import { createToken, createRefreshToken, verifyRefreshToken } from '@utils/token.utils';
 
 const refreshTokens = [];
 
-export const createToken = (req: Request, res: Response) => {
-    const body = req.body as ICreateTokenRequestBody;
-    const user = userDB.find(u => u.password === body.password && u.userName === body.username);
-    if (!user) res.send(403);
+export const deleteTokenController = async (req: Request, res: Response) => {
+    const refreshToken = req.body.refreshToken;
+    verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+};
 
-    const accessToken = sign({ user: user.userName }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '10m' });
-    const refreshToken = sign({ user: user.userName }, process.env.REFRESH_TOKEN_SECRET);
-    refreshTokens.push(refreshToken);
+export const createTokenController = async (req: Request, res: Response) => {
+    if (req.body.refreshToken) {
+        const refreshToken = req.body.refreshToken as string;
+        if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403);
+        try {
+            const accessToken = verifyRefreshToken(refreshToken);
+            return accessToken ? res.json(accessToken) : res.sendStatus(500);
+        } catch (error) {
+            return res.sendStatus(403);
+        }
+    } else {
+        const body = req.body as ICreateTokenRequestBody;
 
-    res.json({ accessToken, refreshToken });
+        if (body.password && body.username) {
+            const isAuthorized = await authorizeWebAdmin(body.username, body.password);
+            if (isAuthorized) return res.sendStatus(403);
+
+            try {
+                const accessToken = createToken({ user: body.username });
+                const refreshToken = createRefreshToken({ user: body.username });
+                refreshTokens.push(refreshToken);
+
+                return res.json({ accessToken, refreshToken });
+            } catch (error) {
+                return res.sendStatus(500);
+            }
+        } else {
+            return res.sendStatus(400);
+        }
+    }
 };

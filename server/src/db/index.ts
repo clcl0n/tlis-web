@@ -1,16 +1,21 @@
-import { connect } from 'mongodb';
+import { connect, Db } from 'mongodb';
+import logger from '@utils/logger';
+
+export let db: Db = null;
 
 export const connectToDB = async () => {
-    const dbConnection = await connect(
+    await connect(
         'mongodb://tlis:tlis@localhost:27017/admin?authSource=tlis&readPreference=primary&appname=MongoDB%20Compass&ssl=false',
         {
             useUnifiedTopology: true
+        },
+        (error, result) => {
+            if (error) {
+                logger.error('Cannot connect to mongoDB.');
+            } else {
+                logger.info('Successfuly connected to mongoDB.');
+                db = result.db('tlis');
+            }
         }
     );
-    const db = dbConnection.db('tlis');
-    const a = await db
-        .collection('users')
-        .find({})
-        .toArray();
-    console.warn(a);
 };

@@ -26,8 +26,8 @@ export const configureExpressServer = (api: Express) => {
     config({
         path: resolve(__dirname, '../.env')
     });
-    logger.info('Express configured.');
     connectToDB();
+    logger.info('Express configured.');
 };
 
 /**

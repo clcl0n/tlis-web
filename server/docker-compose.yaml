@@ -10,6 +10,8 @@ services:
         container_name: 'tlis-mongoDB'
         environment:
             - MONGO_INITDB_DATABASE=tlis
+            - MONGO_INITDB_ROOT_USERNAME=root
+            - MONGO_INITDB_ROOT_PASSWORD=root
         volumes:
             - ./mongoDB/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
             # - ./mongoDB/mongo-volume:/data/db
