@@ -8,6 +8,7 @@
     "build-dev": "nodemon --inspect "
   },
   "dependencies": {
+    "bcrypt": "^4.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "faker": "^4.1.0",
@@ -15,6 +16,7 @@
     "winston": "^3.2.1"
   },
   "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/express": "^4.17.2",
     "@types/faker": "^4.1.8",
     "@types/jsonwebtoken": "^8.3.7",

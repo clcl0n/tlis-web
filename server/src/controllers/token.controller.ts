@@ -1,8 +1,9 @@
 import { Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
 import ICreateTokenRequestBody from '@src/typings/interfaces/ICreateTokenRequestBody';
-import { authorizeWebAdmin } from '@src/db/db.find';
+import { findWebAdmin } from '@src/db/db.find';
 import { createToken, createRefreshToken, verifyRefreshToken } from '@utils/token.utils';
+import { checkPassword } from '@utils/password.utils';
 
 const refreshTokens = [];
 
@@ -25,8 +26,9 @@ export const createTokenController = async (req: Request, res: Response) => {
         const body = req.body as ICreateTokenRequestBody;
 
         if (body.password && body.username) {
-            const isAuthorized = await authorizeWebAdmin(body.username, body.password);
-            if (isAuthorized) return res.sendStatus(403);
+            const webAdmin = await findWebAdmin(body.username);
+            const isAuthorized = checkPassword(body.password, webAdmin.password);
+            if (!isAuthorized) return res.sendStatus(403);
 
             try {
                 const accessToken = createToken({ user: body.username });

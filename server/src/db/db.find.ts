@@ -1,13 +1,13 @@
 import { db } from '.';
 import logger from '@utils/logger';
+import IWebAdminDocument from '@src/typings/interfaces/db/IWebAdminDocument';
 
-export const authorizeWebAdmin = async (username: string, password: string) => {
+export const findWebAdmin = async (username: string): Promise<IWebAdminDocument | null> => {
     try {
-        const webAdmin = await db.collection('WebAdmins').findOne({ username, password });
-        return webAdmin !== null;
+        return await db.collection('WebAdmins').findOne({ username });
     } catch (error) {
         logger.error(error);
-        return false;
+        return null;
     }
 };
 

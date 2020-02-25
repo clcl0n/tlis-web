@@ -29,3 +29,14 @@ export const verifyRefreshToken = (refreshToken: string) => {
         throw error;
     }
 };
+
+export const verifyToken = (accessToken: string) => {
+    try {
+        verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
+
+        return true;
+    } catch (error) {
+        logger.debug(error);
+        return false;
+    }
+};
