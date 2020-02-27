@@ -13,10 +13,13 @@ db.createCollection('WebAdmins', {
     validator: {
         $jsonSchema: {
             bsonType: 'object',
-            required: ['username', 'password'],
+            required: ['username', 'password', 'isRoot'],
             properties: {
                 _id: {
                     bsonType: 'objectId'
+                },
+                isRoot: {
+                    bsonType: 'bool'
                 },
                 username: {
                     bsonType: 'string'

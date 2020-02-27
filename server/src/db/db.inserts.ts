@@ -5,9 +5,10 @@ import logger from '@utils/logger';
 import IWebAdminDocument from '@src/typings/interfaces/db/IWebAdminDocument';
 import { hashPassword } from '@utils/password.utils';
 
-export const webAdminsDBInsert = async (username: string, plaintextPassword: string) => {
+export const webAdminsDBInsert = async (username: string, plaintextPassword: string, isRoot = false) => {
     const newWebAdmin: IWebAdminDocument = {
         username: username,
+        isRoot,
         password: hashPassword(plaintextPassword)
     };
 

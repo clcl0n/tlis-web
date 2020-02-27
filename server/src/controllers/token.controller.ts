@@ -1,15 +1,18 @@
 import { Request, Response } from 'express';
-import { verify } from 'jsonwebtoken';
 import ICreateTokenRequestBody from '@src/typings/interfaces/ICreateTokenRequestBody';
 import { findWebAdmin } from '@src/db/db.find';
 import { createToken, createRefreshToken, verifyRefreshToken } from '@utils/token.utils';
 import { checkPassword } from '@utils/password.utils';
+import logger from '@utils/logger';
 
 const refreshTokens = [];
 
 export const deleteTokenController = async (req: Request, res: Response) => {
-    const refreshToken = req.body.refreshToken;
-    verify(refreshToken, process.env.REFRESH_TOKEN_SECRET);
+    logger.info(refreshTokens);
+    if (!refreshTokens.includes(req.body.refreshToken)) return res.sendStatus(403);
+    refreshTokens.splice(refreshTokens.indexOf(req.body.refreshToken), 1);
+
+    return res.sendStatus(200);
 };
 
 export const createTokenController = async (req: Request, res: Response) => {
@@ -27,6 +30,8 @@ export const createTokenController = async (req: Request, res: Response) => {
 
         if (body.password && body.username) {
             const webAdmin = await findWebAdmin(body.username);
+            if (webAdmin === null) return res.sendStatus(403);
+
             const isAuthorized = checkPassword(body.password, webAdmin.password);
             if (!isAuthorized) return res.sendStatus(403);
 
