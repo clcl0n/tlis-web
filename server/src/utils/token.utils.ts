@@ -20,6 +20,15 @@ export const createRefreshToken = (payload: ITokenClaims) => {
     }
 };
 
+export const getRefreshTokenClaims = (refreshToken: string) => {
+    try {
+        return verify(refreshToken, process.env.REFRESH_TOKEN_SECRET) as ITokenClaims;
+    } catch (error) {
+        logger.error(error);
+        throw error;
+    }
+};
+
 export const verifyRefreshToken = (refreshToken: string) => {
     try {
         const claims = verify(refreshToken, process.env.REFRESH_TOKEN_SECRET) as ITokenClaims;

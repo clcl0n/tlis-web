@@ -1,9 +1,10 @@
 import { Router } from 'express';
 import { createNewWebAdmin } from '@controllers/webAdmin.controller';
 import { authenticateToken } from '@src/middleware/token.middleware';
+import { webAdminValidationRules, validate } from '@src/middleware/validation.middleware';
 
 const webAdminRouter = Router();
 
-webAdminRouter.post('/', authenticateToken, createNewWebAdmin);
+webAdminRouter.post('/', authenticateToken, webAdminValidationRules(), validate, createNewWebAdmin);
 
 export default webAdminRouter;
