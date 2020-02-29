@@ -1,6 +1,15 @@
 import { Request, Response, NextFunction } from 'express';
 import { body, validationResult } from 'express-validator';
 
+export const paginationByIdValidationRules = () => {
+    return [
+        body('pageSize').isNumeric(),
+        body('lastId')
+            .optional()
+            .isString()
+    ];
+};
+
 export const addNewDayProgramValidationRules = () => {
     return [
         body('dayProgram').notEmpty(),
