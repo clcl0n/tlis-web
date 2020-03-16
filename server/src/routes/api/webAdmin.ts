@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { createNewWebAdmin } from '@controllers/webAdmin.controller';
+import { createNewWebAdmin } from '@controllers/webAdminController';
 import { authenticateToken } from '@src/middleware/token.middleware';
 import { webAdminValidationRules, validate } from '@src/middleware/validation.middleware';
 

@@ -1,9 +1,5 @@
 import { Router } from 'express';
-import {
-    addNewDayProgram,
-    getCurrentDayProgram,
-    getDayProgramPaginationById
-} from '@controllers/dayProgram.controller';
+import { addNewDayProgram, getCurrentDayProgram, getDayProgramPaginationById } from '@controllers/dayProgramController';
 import { authenticateToken } from '@src/middleware/token.middleware';
 import {
     validate,

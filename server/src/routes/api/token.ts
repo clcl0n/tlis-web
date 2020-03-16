@@ -3,7 +3,7 @@ import {
     createTokenController,
     deleteTokenController,
     refreshAccessTokenController
-} from '@controllers/token.controller';
+} from '@controllers/tokenController';
 import { authenticateToken } from '@src/middleware/token.middleware';
 import {
     validate,

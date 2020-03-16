@@ -16,6 +16,9 @@
         ]
     },
     "settings": {
+        "files.exclude": {
+            "node_modules": true
+        },
         "editor.formatOnSave": true,
         "eslint.codeActionsOnSave.mode": "all",
         "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
