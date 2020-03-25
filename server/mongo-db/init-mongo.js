@@ -9,7 +9,7 @@ db.createUser({
     ]
 });
 
-db.createCollection('WebAdmins', {
+db.createCollection('Admins', {
     validator: {
         $jsonSchema: {
             bsonType: 'object',
@@ -36,7 +36,7 @@ db.WebAdmins.createIndex({
     username: 1
 });
 
-db.createCollection('DayProgram', {
+db.createCollection('Program', {
     validator: {
         $jsonSchema: {
             bsonType: 'object',
@@ -54,6 +54,9 @@ db.createCollection('DayProgram', {
                 date: {
                     bsonType: 'date'
                 },
+                imageUrl: {
+                    bsonType: 'string'
+                },
                 programPartIDs: {
                     bsonType: 'array',
                     items: {
@@ -65,7 +68,7 @@ db.createCollection('DayProgram', {
     }
 });
 
-db.createCollection('DayProgramPart', {
+db.createCollection('ProgramPart', {
     validator: {
         $jsonSchema: {
             bsonType: 'object',

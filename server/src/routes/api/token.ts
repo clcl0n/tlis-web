@@ -1,9 +1,5 @@
 import { Router } from 'express';
-import {
-    createTokenController,
-    deleteTokenController,
-    refreshAccessTokenController
-} from '@controllers/tokenController';
+import { deleteToken, postToken, postRefreshToken } from '@controllers/tokenController';
 import { authenticateToken } from '@src/middleware/token.middleware';
 import {
     validate,
@@ -14,8 +10,8 @@ import {
 
 const tokenRouter = Router();
 
-tokenRouter.delete('/', deleteRefreshTokenValidationRules(), validate, authenticateToken, deleteTokenController);
-tokenRouter.post('/', accessTokenRequestValidationRules(), validate, createTokenController);
-tokenRouter.post('/refresh', refreshAccessTokenRequestValidationRules(), validate, refreshAccessTokenController);
+tokenRouter.delete('/', deleteRefreshTokenValidationRules(), validate, authenticateToken, deleteToken);
+tokenRouter.post('/', accessTokenRequestValidationRules(), validate, postToken);
+tokenRouter.post('/refresh', refreshAccessTokenRequestValidationRules(), validate, postRefreshToken);
 
 export default tokenRouter;

@@ -10,13 +10,13 @@ export const paginationByIdValidationRules = () => {
     ];
 };
 
-export const addNewDayProgramValidationRules = () => {
+export const addNewProgramValidationRules = () => {
     return [
-        body('dayProgram').notEmpty(),
-        body(['dayProgram.title', 'dayProgram.description', 'dayProgram.date']).isString(),
-        body('dayProgramParts').notEmpty(),
-        body(['dayProgramParts.*.title', 'dayProgramParts.*.description']).isString(),
-        body('dayProgramParts.*.airtime').isNumeric()
+        body('program').notEmpty(),
+        body(['program.title', 'program.description', 'program.date', 'program.imageUrl']).isString(),
+        body('programParts').notEmpty(),
+        body(['programParts.*.title', 'programParts.*.description']).isString(),
+        body('programParts.*.airtime').isNumeric()
     ];
 };
 

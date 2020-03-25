@@ -4,21 +4,19 @@ import { findWebAdmin } from '@src/db/db.find';
 import { createToken, createRefreshToken, verifyRefreshToken, getRefreshTokenClaims } from '@utils/token.utils';
 import { checkPassword } from '@utils/password.utils';
 import { addNewRefreshToken, includesRefreshToken, removeRefreshToken } from '@utils/cache.utils';
+import { deleteRefreshTokenService } from '@src/services/tokenService';
 
-export const deleteTokenController = async (req: Request, res: Response) => {
+export const deleteToken = async (req: Request, res: Response) => {
     try {
-        const claims = getRefreshTokenClaims(req.body.refreshToken);
+        deleteRefreshTokenService(req.body.refreshToken);
 
-        if (!includesRefreshToken(claims.user)) return res.sendStatus(403);
-
-        removeRefreshToken(claims.user);
         return res.sendStatus(200);
     } catch (error) {
         return res.sendStatus(403);
     }
 };
 
-export const refreshAccessTokenController = async (req: Request, res: Response) => {
+export const postRefreshToken = async (req: Request, res: Response) => {
     const refreshToken = req.body.refreshToken as string;
     const claims = getRefreshTokenClaims(req.body.refreshToken);
 
@@ -31,7 +29,7 @@ export const refreshAccessTokenController = async (req: Request, res: Response) 
     }
 };
 
-export const createTokenController = async (req: Request, res: Response) => {
+export const postToken = async (req: Request, res: Response) => {
     const body = req.body as ICreateTokenRequestBody;
 
     const webAdmin = await findWebAdmin(body.username);

@@ -1,8 +1,9 @@
-export default interface IAddNewDayProgramRequestBody {
+export default interface IAddNewProgramDTO {
     dayProgram: {
         title: string;
         description: string;
         date: string;
+        imageUrl: string;
     };
     dayProgramParts: Array<{
         title: string;

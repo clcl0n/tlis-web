@@ -1,12 +1,16 @@
 import { Router } from 'express';
 import tokenRouter from './token';
-import dayProgramRouter from './dayProgram';
-import webAdminRouter from './webAdmin';
+import programRouter from './program';
+import adminRouter, { AdminRouter } from './admin';
+import heartbeatRouter from './heartbeat';
+import uploadsRouter from './uploads';
 
 const apiRouter = Router();
 
 apiRouter.use('/token', tokenRouter);
-apiRouter.use('/dayprogram', dayProgramRouter);
-apiRouter.use('/webadmin', webAdminRouter);
+apiRouter.use('/program', programRouter);
+apiRouter.use('/admin', adminRouter);
+apiRouter.use('/heartbeat', heartbeatRouter);
+apiRouter.use('/uploads', uploadsRouter);
 
 export default apiRouter;

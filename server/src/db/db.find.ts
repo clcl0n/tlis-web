@@ -1,31 +1,31 @@
 import { db } from '.';
 import logger from '@utils/logger';
-import IWebAdminDocument from '@src/typings/interfaces/db/IWebAdminDocument';
-import { ObjectID, Cursor } from 'mongodb';
-import IDayProgramDocument from '@src/typings/interfaces/db/IDayProgramDocument';
+import IAdminDocument from '@src/typings/interfaces/db/IAdminDocument';
+import { ObjectID } from 'mongodb';
+import IProgramDocument from '@src/typings/interfaces/db/IProgramDocument';
 
 export const findDayProgramPart = async (dayProgramPartId: ObjectID) => {
     try {
-        return await db.collection('DayProgramParts').find(dayProgramPartId);
+        return await db.collection('ProgramParts').find(dayProgramPartId);
     } catch (error) {
         logger.error(error);
         throw error;
     }
 };
 
-export const paginationDayProgramById = async (pageSize: number, lastId?: string) => {
+export const paginationDayProgram = async (pageSize: number, lastId?: string) => {
     try {
-        let dayPrograms: Array<IDayProgramDocument>;
+        let dayPrograms: Array<IProgramDocument>;
         if (lastId) {
             dayPrograms = await db
-                .collection('DayProgram')
+                .collection('Program')
                 .find({ _id: { $lt: ObjectID.createFromHexString(lastId) } })
                 .sort({ $natural: -1 })
                 .limit(pageSize)
                 .toArray();
         } else {
             dayPrograms = await db
-                .collection('DayProgram')
+                .collection('Program')
                 .find()
                 .sort({ $natural: -1 })
                 .limit(pageSize)
@@ -39,9 +39,9 @@ export const paginationDayProgramById = async (pageSize: number, lastId?: string
     }
 };
 
-export const findWebAdmin = async (username: string): Promise<IWebAdminDocument | null> => {
+export const findWebAdmin = async (username: string): Promise<IAdminDocument | null> => {
     try {
-        return await db.collection('WebAdmins').findOne({ username });
+        return await db.collection('Admins').findOne({ username });
     } catch (error) {
         logger.error(error);
         return null;
