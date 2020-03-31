@@ -1,0 +1,25 @@
+version: '3'
+services:
+  tlisdevcontainer:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    command: sleep infinity
+    volumes:
+      - ..:/workspace:cached
+    links:
+      - tlisdevmongo
+
+  tlisdevmongo:
+    image: mongo:4.2.3-bionic
+    container_name: 'dev-tlis-mongoDB'
+    environment:
+        - MONGO_INITDB_DATABASE=tlis
+        - MONGO_INITDB_ROOT_USERNAME=root
+        - MONGO_INITDB_ROOT_PASSWORD=root
+    volumes:
+        - ../mongo-db/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+        - ../mongo-db/mongo-volume:/data/db
+    ports:
+        - '27017-27019:27017-27019'
+ 

@@ -12,7 +12,8 @@
   "workspaces": [
     "web",
     "web-admin",
-    "server"
+    "server",
+    "servers"
   ],
   "dependencies": {},
   "devDependencies": {}

@@ -1,4 +1,4 @@
-import IAddNewProgramDTO from '@src/typings/interfaces/dto/IAddNewProgramDTO';
+import IAddNewProgramDTO from '@shared/typings/dto/IAddNewProgramDTO';
 import IProgramPartDocument from '@src/typings/interfaces/db/IProgramPartDocument';
 import { ObjectID, Timestamp } from 'mongodb';
 import IProgramDocument from '@src/typings/interfaces/db/IProgramDocument';
@@ -11,7 +11,7 @@ export const getProgramPaginationService = async (programPaginationDTO: IProgram
 };
 
 export const addNewProgramService = async (programDTO: IAddNewProgramDTO) => {
-    const dayProgramPartDocuments: Array<IProgramPartDocument> = programDTO.dayProgramParts.map(dayProgramPart => {
+    const dayProgramPartDocuments: Array<IProgramPartDocument> = programDTO.programParts.map(dayProgramPart => {
         return {
             _id: new ObjectID(),
             title: dayProgramPart.title,
@@ -21,10 +21,10 @@ export const addNewProgramService = async (programDTO: IAddNewProgramDTO) => {
     });
 
     const dayProgramDocument: IProgramDocument = {
-        title: programDTO.dayProgram.title,
-        date: new Date(programDTO.dayProgram.date),
-        description: programDTO.dayProgram.description,
-        imageUrl: programDTO.dayProgram.imageUrl,
+        title: programDTO.program.title,
+        date: new Date(programDTO.program.date),
+        description: programDTO.program.description,
+        imageUrl: programDTO.program.imageUrl,
         programPartIDs: dayProgramPartDocuments.map(dayProgramPartDocument => dayProgramPartDocument._id)
     };
 

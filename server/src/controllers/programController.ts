@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { addNewProgramService, getProgramPaginationService } from '@src/services/programService';
-import IAddNewProgramDTO from '@src/typings/interfaces/dto/IAddNewProgramDTO';
-import IProgramPaginationDTO from '@src/typings/interfaces/dto/IProgramPaginationDTO';
+import IAddNewProgramDTO from '@shared/typings/dto/IAddNewProgramDTO';
+import IProgramPaginationDTO from '@shared/typings/dto/IProgramPaginationDTO';
 
 export const getProgram = async (req: Request, res: Response) => {
     res.sendStatus(200);

@@ -5,7 +5,7 @@ export let db: Db = null;
 
 export const connectToDB = async () => {
     await connect(
-        'mongodb://tlis:tlis@localhost:27017/admin?authSource=tlis&readPreference=primary&appname=MongoDB%20Compass&ssl=false',
+        'mongodb://tlis:tlis@mongoDB:27017/admin?authSource=tlis&readPreference=primary&appname=MongoDB%20Compass&ssl=false',
         {
             useUnifiedTopology: true
         },

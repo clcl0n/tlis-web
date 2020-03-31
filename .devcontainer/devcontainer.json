@@ -1,0 +1,22 @@
+{
+    "name": "Tlis dev Container",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "tlisdevcontainer",
+    "workspaceFolder": "/workspace",
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/ash"
+    },
+    "extensions": ["dbaeumer.vscode-eslint", "humao.rest-client", "esbenp.prettier-vscode"]
+
+    // Uncomment the next line if you want start specific services in your Docker Compose config.
+    // "runServices": [],
+
+    // Uncomment the line below if you want to keep your containers running after VS Code shuts down.
+    // "shutdownAction": "none",
+
+    // Use 'postCreateCommand' to run commands after the container is created.
+    // "postCreateCommand": "yarn install",
+
+    // Uncomment to connect as a non-root user. See https://aka.ms/vscode-remote/containers/non-root.
+    // "remoteUser": "node"
+}

@@ -3,14 +3,17 @@
         "module": "commonjs",
         "baseUrl": "src",
         "sourceMap": true,
+        "skipLibCheck": true,
+        "moduleResolution": "Node",
         "paths": {
             "@controllers/*": ["./controllers/*"],
             "@routes/*": ["./routes/*"],
             "@utils/*": ["./utils/*"],
             "@logger": ["./utils/logger.ts"],
-            "@src/*": ["./*"]
+            "@src/*": ["./*"],
+            "@shared/*": ["../../shared/*"]
         }
     },
-    "include": ["src/**/*"],
+    "include": ["src/**/*", "../../shared/*"],
     "exclude": ["node_modules", "dist"]
 }

@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "baseUrl": "src",
+        "sourceMap": true,
+        "skipLibCheck": true,
+        "moduleResolution": "Node",
+        "paths": {
+            "@controllers/*": ["./controllers/*"],
+            "@routes/*": ["./routes/*"],
+            "@utils/*": ["./utils/*"],
+            "@src/*": ["./*"],
+            "@shared/*": ["../../../shared/*"],
+            "@server-common/*": ["../../common/*"]
+        }
+    },
+    "include": ["src/**/*", "../../../shared/*", "../../common/*"],
+    "exclude": ["node_modules", "dist"]
+}

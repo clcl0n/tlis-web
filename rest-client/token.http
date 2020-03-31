@@ -4,6 +4,12 @@
 
 ###
 
+# GET Heartbeat
+
+GET http://{{host}}/api/heartbeat HTTP/1.1
+
+###
+
 # GET Token
 
 POST http://{{host}}/api/token HTTP/1.1

@@ -43,7 +43,17 @@ export const postToken = async (req: Request, res: Response) => {
         const refreshToken = createRefreshToken({ user: body.username });
         addNewRefreshToken(body.username, refreshToken);
 
-        return res.json({ accessToken, refreshToken });
+        res.cookie('token', accessToken, {
+            domain: '.tlis.sk',
+            path: '/',
+            maxAge: 900000
+        });
+        res.cookie('refreshToken', refreshToken, {
+            domain: '.tlis.sk',
+            path: '/',
+            maxAge: 900000
+        });
+        res.send();
     } catch (error) {
         return res.sendStatus(500);
     }

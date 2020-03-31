@@ -1,6 +1,6 @@
 # Create new Web admin
 
-POST http://127.0.0.1:8080/api/webadmin
+POST http://127.0.0.1:8080/api/admin
 Content-Type: application/json
 
 {

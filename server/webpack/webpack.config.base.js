@@ -12,10 +12,18 @@ module.exports = {
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, '../dist')
+        path: path.resolve(__dirname, '../dist'),
+        libraryTarget: 'commonjs'
     },
     context: path.resolve(__dirname, '../'),
     target: 'node',
+    mode: 'development',
+    node: {
+        global: false,
+        __filename: false,
+        __dirname: false,
+    },
+    externals: ['express', 'mongodb', 'bcrypt', 'sharp'],
     resolve: {
         extensions: ['.ts', '.js'],
         plugins: [

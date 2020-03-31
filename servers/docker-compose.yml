@@ -1,0 +1,14 @@
+version: '3'
+services:
+    admin:
+        build:
+            context: .
+            dockerfile: ./admin/Dockerfile
+        image: admin-server:1.0
+    token:
+        build:
+            context: .
+            dockerfile: ./token/Dockerfile
+        image: token-server:1.0
+    # program:
+    # mongo:

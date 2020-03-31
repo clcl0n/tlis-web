@@ -7,6 +7,7 @@ const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 const WebpackBar = require('webpackbar');
 const HappyPack = require('happypack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     entry: {
@@ -38,7 +39,7 @@ module.exports = {
                 loader: 'source-map-loader'
             },
             {
-                test: /\.(scss|sass)$/i,
+                test: /\.(scss|sass|css)$/i,
                 use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
             },
             {
@@ -73,6 +74,9 @@ module.exports = {
                 { path: 'eslint-loader', query: { fix: true, emitWarning: true } }
             ]
         }),
-        new MiniCssExtractPlugin()
+        new MiniCssExtractPlugin(),
+        new Dotenv({
+            path: '.env'
+        })
     ]
 };

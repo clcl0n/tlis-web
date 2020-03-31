@@ -6,6 +6,9 @@ module.exports = {
     devtool: 'inline-source-map',
     mode: 'development',
     devServer: {
+        disableHostCheck: true,
+        publicPath: '/',
+        historyApiFallback: true,
         stats: {
             colors: true,
             hash: false,

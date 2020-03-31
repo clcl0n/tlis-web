@@ -6,11 +6,11 @@ import { webAdminValidationRules, validate } from '@src/middleware/validation.mi
 export class AdminRouter {
     private router!: Router;
     private controller!: AdminController;
-    
+
     constructor() {
         this.controller = new AdminController();
         this.router = Router();
-        this.router.post('/',  authenticateToken, webAdminValidationRules(), validate, this.controller.postNewAdmin);
+        this.router.post('/', authenticateToken, webAdminValidationRules(), validate, this.controller.postNewAdmin);
     }
 
     public getRouter() {
@@ -20,6 +20,6 @@ export class AdminRouter {
 
 const adminRouter = Router();
 
-adminRouter.post('/', authenticateToken, webAdminValidationRules(), validate, postNewAdmin);
+adminRouter.post('/', postNewAdmin);
 
 export default adminRouter;

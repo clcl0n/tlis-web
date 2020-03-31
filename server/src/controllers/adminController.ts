@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import ICreateNewAdminDTO from '@src/typings/interfaces/dto/ICreateNewAdminDTO';
+import ICreateNewAdminDTO from '@shared/typings/dto/ICreateNewAdminDTO';
 import { createNewAdminService } from '@src/services/adminService';
 
 export default class AdminController {

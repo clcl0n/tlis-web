@@ -1,28 +1,28 @@
 {
-  "folders": [
-    {
-      "name": "Tlis Web",
-      "path": "/home/clcl0n/GitHub/tlis-web/"
+    "folders": [
+        {
+            "name": "Tlis Web",
+            "path": "."
+        }
+    ],
+    "extensions": {
+        "recommendations": [
+            "esbenp.prettier-vscode",
+            "ms-azuretools.vscode-docker",
+            "dbaeumer.vscode-eslint",
+            "pkief.material-icon-theme",
+            "ms-vscode-remote.remote-containers",
+            "akamud.vscode-theme-onedark"
+        ]
+    },
+    "settings": {
+        "files.watcherExclude": {
+            "**/.git/objects/**": true,
+            "**/.git/subtree-cache/**": true,
+            "**/node_modules/**": true
+        },
+        "editor.formatOnSave": true,
+        "eslint.codeActionsOnSave.mode": "all",
+        "eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
     }
-  ],
-  "extensions": {
-    "recommendations": [
-      "esbenp.prettier-vscode",
-      "ms-azuretools.vscode-docker",
-      "dbaeumer.vscode-eslint",
-      "pkief.material-icon-theme",
-      "ms-vscode-remote.remote-containers",
-      "akamud.vscode-theme-onedark"
-    ]
-  },
-  "settings": {
-    "editor.formatOnSave": true,
-    "eslint.codeActionsOnSave.mode": "all",
-    "eslint.validate": [
-      "javascript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact"
-    ]
-  }
 }

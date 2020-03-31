@@ -9,7 +9,7 @@ db.createUser({
     ]
 });
 
-db.createCollection('Admins', {
+db.createCollection('admins', {
     validator: {
         $jsonSchema: {
             bsonType: 'object',
@@ -32,11 +32,11 @@ db.createCollection('Admins', {
     }
 });
 
-db.WebAdmins.createIndex({
-    username: 1
-});
+// db.WebAdmins.createIndex({
+//     username: 1
+// });
 
-db.createCollection('Program', {
+db.createCollection('programs', {
     validator: {
         $jsonSchema: {
             bsonType: 'object',
@@ -68,7 +68,7 @@ db.createCollection('Program', {
     }
 });
 
-db.createCollection('ProgramPart', {
+db.createCollection('program-parts', {
     validator: {
         $jsonSchema: {
             bsonType: 'object',

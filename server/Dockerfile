@@ -1,12 +1,19 @@
 FROM node:lts-slim
 
-WORKDIR /usr/node_server
+WORKDIR /usr/tlis_api/source
 
-COPY package.json ./
+COPY . .
 
 RUN yarn
 
-COPY ./dist .
+RUN yarn build-prod
+
+COPY ./dist/server.js ..
+COPY package.json ..
+
+WORKDIR /usr/tlis_api
+
+RUN yarn install --production
 
 EXPOSE 8080
 
