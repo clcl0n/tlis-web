@@ -6,6 +6,7 @@ import { checkPassword } from '@utils/passwordUtils';
 // import { addNewRefreshToken, includesRefreshToken, removeRefreshToken } from '@utils/cache.utils';
 
 import { deleteRefreshTokenService } from '@src/services/tokenService';
+import { getAdminByUsername } from '@src/database/admins';
 
 export const deleteToken = async (req: Request, res: Response) => {
     try {
@@ -32,8 +33,7 @@ export const deleteToken = async (req: Request, res: Response) => {
 
 export const postToken = async (req: Request, res: Response) => {
     const body = req.body as ICreateTokenRequest;
-    const webAdmin = null;
-    // const webAdmin = await findWebAdmin(body.username);
+    const webAdmin = await getAdminByUsername(body.username);
     if (webAdmin === null) return res.sendStatus(403);
 
     const isAuthorized = checkPassword(body.password, webAdmin.password);

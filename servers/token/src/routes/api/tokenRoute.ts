@@ -1,6 +1,6 @@
 import { Router } from 'express';
-// import { deleteToken, postToken, postRefreshToken } from '@controllers/tokenController';
-// import { authenticateToken } from '@src/middleware/token.middleware';
+import { postToken } from '@controllers/tokenController';
+import { authenticateToken } from '@src/middlewares/tokenMiddleware';
 import {
     accessTokenRequestValidationRules,
     refreshAccessTokenRequestValidationRules,
@@ -12,7 +12,7 @@ import { validate } from '@server-common/middleware/validationMiddleware';
 const tokenRouter = Router();
 
 // tokenRouter.delete('/', deleteRefreshTokenValidationRules(), validate, authenticateToken, deleteToken);
-// tokenRouter.post('/', accessTokenRequestValidationRules(), validate, postToken);
+tokenRouter.post('/', accessTokenRequestValidationRules(), validate, postToken);
 // tokenRouter.post('/refresh', refreshAccessTokenRequestValidationRules(), validate, postRefreshToken);
 
 export default tokenRouter;

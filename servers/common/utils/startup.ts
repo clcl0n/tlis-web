@@ -28,9 +28,7 @@ export const registerExpressServerRoutes = (api: Express, routes: Router) => {
  */
 export const configureExpressServer = (api: Express) => {
     api.set('port', 8080);
-    config({
-        path: resolve(__dirname, '../.env')
-    });
+    config();
     connectToDB();
     logger.info('Express configured.');
 };

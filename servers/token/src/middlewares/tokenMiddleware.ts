@@ -3,6 +3,7 @@ import { verifyToken } from '@utils/tokenUtils';
 
 export const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
     const cookieHeader = req.headers.cookie;
+    console.warn(cookieHeader);
     const token =
         cookieHeader &&
         cookieHeader
