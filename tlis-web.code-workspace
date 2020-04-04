@@ -1,8 +1,36 @@
 {
     "folders": [
         {
+            "name": "Documents",
+            "path": "./documents"
+        },
+        {
+            "name": "Mongo DB",
+            "path": "./mongo-db"
+        },
+        {
+            "name": "Rest Client",
+            "path": "./rest-client"
+        },
+        {
+            "name": "Tlis Microservices",
+            "path": "./microservices"
+        },
+        {
             "name": "Tlis Web",
-            "path": "."
+            "path": "./web"
+        },
+        {
+            "name": "Tlis Web Admin",
+            "path": "./web-admin"
+        },
+        {
+            "name": "Tlis Common",
+            "path": "./common"
+        },
+        {
+            "name": "Old Server",
+            "path": "./server"
         }
     ],
     "extensions": {
@@ -19,7 +47,7 @@
         "files.watcherExclude": {
             "**/.git/objects/**": true,
             "**/.git/subtree-cache/**": true,
-            "**/node_modules/**": true
+            "**/node_modules/*/**": true
         },
         "editor.formatOnSave": true,
         "eslint.codeActionsOnSave.mode": "all",

@@ -10,10 +10,10 @@
             "@routes/*": ["./routes/*"],
             "@utils/*": ["./utils/*"],
             "@src/*": ["./*"],
-            "@shared/*": ["../../../shared/*"],
+            "@common/*": ["../../../common/*"],
             "@server-common/*": ["../../common/*"]
         }
     },
-    "include": ["src/**/*", "../../../shared/*", "../../common/*"],
+    "include": ["src/**/*", "../../../common/*", "../../common/*"],
     "exclude": ["node_modules", "dist"]
 }

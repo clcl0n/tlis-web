@@ -1,6 +1,8 @@
 @hostname = 127.0.0.1
 @port = 8080
 @host = {{hostname}}:{{port}}
+@dateTime = {{$datetime iso8601}}
+@airtime = {{$timestamp 60000}}
 
 ###
 
@@ -18,3 +20,26 @@ GET http://{{host}}/api/program/heartbeat HTTP/1.1
 
 # < ./1.png
 # ------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+###
+
+# @name NewProgram
+
+POST http://{{host}}/api/program HTTP/1.1
+Content-Type: application/json
+
+{
+    "programParts": [
+        {
+            "title": "title",
+            "description": "desc",
+            "airtime": {{airtime}}
+        }
+    ],
+    "program": {
+        "title": "title",
+        "description": "description",
+        "date": "Sat Apr 04 2020 07:54:08 GMT+0200 (Central European Summer Time)",
+        "imageUrl": "imageUrl"
+    }
+}

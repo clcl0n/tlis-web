@@ -18,20 +18,3 @@ Content-Type: application/json
     "username": "tlis1",
     "password": "tlis12"
 }
-
-
-###
-
-# Refresh Token
-
-POST http://{{host}}/api/token/refresh HTTP/1.1
-Content-Type: application/json
-
-{
-  "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoidGxpczEiLCJpYXQiOjE1ODQ4ODA2MTh9.Sh2A23v6VHmJty30rGCTjQ3cPnfON9ZKqsFAtndv578"
-}
-
-###
-
-GET http://{{host}}/api/token/test HTTP/1.1
-Cookie: {{GET_Token.response.headers.Set-Cookie}}

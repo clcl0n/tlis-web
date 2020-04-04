@@ -20,15 +20,15 @@
             "dbaeumer.vscode-eslint",
             "pkief.material-icon-theme",
             "ms-vscode-remote.remote-containers",
-            "akamud.vscode-theme-onedark"
+            "akamud.vscode-theme-onedark",
+            "mutantdino.resourcemonitor"
         ]
     },
     "settings": {
         "files.watcherExclude": {
             "**/.git/objects/**": true,
             "**/.git/subtree-cache/**": true,
-            "**/node_modules/**": true,
-            "node_modules": true
+            "**/node_modules/**": true
         },
         "editor.formatOnSave": true,
         "eslint.codeActionsOnSave.mode": "all",
