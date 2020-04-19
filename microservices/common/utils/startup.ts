@@ -1,5 +1,5 @@
 import { Express, json, Router } from 'express';
-import logger from '@server-common/utils/logger';
+import logger from './logger';
 import { config } from 'dotenv';
 import { resolve } from 'path';
 import { connectToDB } from './database';

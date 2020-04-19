@@ -8,14 +8,14 @@ const WriteFilePlugin = require('write-file-webpack-plugin');
 
 module.exports = {
     entry: {
-        server: path.resolve(__dirname, '../src/index.ts')
+        server: path.resolve(__dirname, './src/index.ts')
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, '../dist'),
+        path: path.resolve(__dirname, './dist'),
         libraryTarget: 'commonjs'
     },
-    context: path.resolve(__dirname, '../'),
+    context: path.resolve(__dirname, './'),
     target: 'node',
     mode: 'development',
     node: {
@@ -26,11 +26,7 @@ module.exports = {
     externals: ['express', 'mongodb', 'bcrypt'],
     resolve: {
         extensions: ['.ts', '.js'],
-        plugins: [
-            new TsconfigPathsPlugin({
-                configFile: path.resolve(__dirname, '../tsconfig.json')
-            })
-        ]
+        plugins: [new TsconfigPathsPlugin()]
     },
     module: {
         rules: [

@@ -3,20 +3,20 @@ services:
     server:
         build: .
         image: tlis-server:1.0
-        environment: 
+        environment:
             - ACCESS_TOKEN_SECRET=425c67d43b2948eea562414f7395e67def08fd77ef56a14718a6f92c6be037c7ff9ce73fd11b714216ab80337d37ed3e10eff1f8d75becaac98fb3a874b22656
             - REFRESH_TOKEN_SECRET=9a853fcc0e18772294ffdcb660f62e12a77a2719b1ccb1ed7025d622cc7c6c891c512e3bd07521d4efaed18aabb1060c366dc2f3ebc8ae26bab3f7b369386f30
         ports:
             - '8080:8080'
-    mongoDB:
-        image: mongo:4.2.3-bionic
-        container_name: 'tlis-mongoDB'
-        environment:
-            - MONGO_INITDB_DATABASE=tlis
-            - MONGO_INITDB_ROOT_USERNAME=root
-            - MONGO_INITDB_ROOT_PASSWORD=root
-        volumes:
-            - ./mongo-db/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
-            # - ./mongoDB/mongo-volume:/data/db
-        ports:
-            - '27017-27019:27017-27019'
+    # mongoDB:
+    #     image: mongo:4.2.3-bionic
+    #     container_name: 'tlis-mongoDB'
+    #     environment:
+    #         - MONGO_INITDB_DATABASE=tlis
+    #         - MONGO_INITDB_ROOT_USERNAME=root
+    #         - MONGO_INITDB_ROOT_PASSWORD=root
+    #     volumes:
+    #         - ./mongo-db/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    #         # - ./mongoDB/mongo-volume:/data/db
+    #     ports:
+    #         - '27017-27019:27017-27019'
